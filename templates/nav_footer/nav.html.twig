@@ -1,0 +1,37 @@
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container-fluid">
+                        <a class="navbar-brand" href="/">Documentation</a>
+                        <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+                                <ul class="nav ml-auto mr-3">
+
+
+                                        {% if not app.user %}
+                                            <li class="nav-item">
+                                                    <a class="nav-link text-white" href="">Connexion</a>
+                                                    
+                                            </li>
+                                            <li class="nav-item">
+
+                                                    <a class="nav-link text-white" href="">S'inscrire</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="nav-item">
+                                                    <a class="nav-link text-white" href="">Messages</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                    <a class="nav-link text-white" href="">Amis</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                    <a class="nav-link text-white" href="">Mon Profil</a>
+                                            </li>
+                                            {# <li class="nav-item">
+                                                    <a class="nav-link text-white" href="{{ path('app_parametre') }}">Paramètre</a>
+                                            </li> #}
+                                            <li class="nav-item">
+                                                    <a class="nav-link text-white" href=""><span class="fa fa-sign-out "></span></a>
+                                            </li>
+                                        {% endif %}
+                                </ul>
+                        </div>
+                </div>
+        </nav>
