@@ -1,24 +1,64 @@
-{% extends 'base.html.twig'%}
-
-
-
+{% block stylesheet %}
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+{% endblock %}
 {% block body %}
 
-<h1>Connexion !! </h1>
+    <style>
+    body{
+        background-color:#e9ecef;
+    }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 
 
-<form action="{{path('security_login')}}" method="post">
-    <div class="form-group">
-        <input placeholder="Adresse email " required name="_username" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <input placeholder="Mot de passe " required name="_password" type="password" class="form-control">
-    </div>
+<form class="form-signin" action="{{path('security_login')}}" method="post">
+  <div class="text-center mb-4">
+    {# <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> #}
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    
+  </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-success"> Connextion </button>
-    </div>
+  <div class="form-label-group">
+    <input name="_username" type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputEmail">Adresse Email</label>
+  </div>
 
+  <div class="form-label-group">
+    <input name="_password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="inputPassword">Mot de passe</label>
+  </div>
 
+  {# <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> #}
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+  
+  <div class="text-center mb-4">
+    
+    <a href="{{path('security_registration')}}">S'inscrire</a>
+    
+  </div>
+
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2023</p>
 </form>
+
+
+    
 {% endblock %}
+

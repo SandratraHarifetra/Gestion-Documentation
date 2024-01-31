@@ -39,13 +39,31 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = ['ROLE_USER'];
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
+
      /**
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
      */
     public $confirm_password;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Birthday;
 
     public function getId(): ?int
     {
@@ -76,6 +94,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
     public function getPassword(): ?string
     {
         return $this->password;
@@ -94,7 +124,31 @@ class User implements UserInterface
     public function getSalt(){
 
     }
-    public function getRoles(){
-        return ['ROLE_USER'];
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+          
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->Birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $Birthday): self
+    {
+        $this->Birthday = $Birthday;
+
+        return $this;
     }
 }

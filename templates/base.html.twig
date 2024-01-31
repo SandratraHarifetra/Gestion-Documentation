@@ -8,6 +8,7 @@
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+        {# <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet"> #}
 		{% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -19,7 +20,7 @@
     <body>
              
         {% include "nav_footer/nav.html.twig" %} 
-            <div class="container" style="min-height: 96vh;">               
+            <div class="container" style="min-height: 100vh;">               
                 {% block body %}{% endblock %}
             </div>
         {% include "nav_footer/footer.html.twig" %} 

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Articles</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            
+                <a href="/article/new/" class="btn btn-sm btn-outline-primary">           
+                        Publier des Documentations
+                </a>
+            
+        </div>
+      </div>
+    {% endif %}
+
+
+
+
+    {# <div class="row mt-5">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h2>Capillaire</h2>
+        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+        <p><a class="btn btn-sm btn-outline-primary" href="#">Voir plus! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h2>Recette à cuisine</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+        <p><a class="btn btn-sm btn-outline-primary" href="#">Voir plus! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#000000"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+
+        <h2>Roman</h2>
+        <p>And lastly this, the third column of representative placeholder content.</p>
+        <p><a class="btn btn-sm btn-outline-primary" href="#">Voir plus! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row --> #}
+<div class="album py-5 bg-light">
+<div class="container">
+    <div class="row mt-5">
+    {% for article in article %}
+        {# {{ dump(article.titre) }} #}
+    
+      <div class="col-md-4 shadow-sm">
+        {# <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> #}
+        <img class="bd-placeholder-img rounded-circle d-block mx-auto" src="{{asset('depot/doc.jpg')}}" alt="logo" width="100", height="100">
+        <div class="card-body">
+            <div class="card-text">
+              <h2>{{article.titre}}</h2>
+              <p>{{article.description}}</p>
+              
+            </div>
+            <div class="d-flex justify-content-between mt-0 align-items-center">
+              <div class="btn-group">
+                  <p><a class="btn btn-sm btn-outline-primary" href="{{ path('app_article_show', {'id': article.id})}}">Voir plus &raquo;</a></p>
+                  {# <p><a class="btn btn-sm btn-outline-primary" href="{{ path('app_article_show', {'id': article.id})}}">Voir plus &raquo;</a></p> #}
+                  {% if is_granted('ROLE_ADMIN') %}
+                    <p><a class="btn btn-sm btn-outline-primary" href="{#{{ path('app_article_show', {'id': article.id})}}#}">Modifier &raquo;</a></p>
+                  {% endif %}
+              </div>
+              <small class="text-muted">{{article.datepublication ? article.datepublication|date('d-F-Y')}}</small>
+            </div>
+        </div>
+      </div><!-- /.col-lg-4 -->
+    
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1 class="mt-5">Création d'une Documentation</h1>
+
+{{form_start(form, {'attr': {'class':'form-signin'}})}}
+    {{form_row(form.titre)}}
+    {{form_row(form.description)}}
+    {{form_row(form.Documentation)}}
+    
+    
+   <button type="submit" class="btn btn-lg btn-primary">Publier</button>
+{{form_end(form)}}
+
+{% endblock %}

@@ -23,6 +23,15 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+                default_target_path: app_article
+
+            logout:
+                path: security_logout
+                target: security_login
+    role_hierarchy:
+        ROLE_CLIENT: ROLE_USER
+        ROLE_ADMIN: ROLE_USER 
+        ROLE_SUPER_ADMIN: [ROLE_USER,ROLE_ADMIN]
 
 
 
